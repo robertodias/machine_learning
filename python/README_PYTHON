@@ -1,0 +1,25 @@
+Machine Learning on OS X 10.11.6
+--------------------------------
+Here are the commands I ran on my Macbook Pro Retina 13.
+I’ve installed both Python2.7 and Python3.
+
+
+Installing Python 2.7
+---------------------
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)”
+brew update
+brew install python
+xcode-select —install
+pip install --upgrade pip setuptools
+pip install numpy pandas matplotlib jupyter scikit-learn
+brew linkapps python
+
+Installing python 3
+-------------------
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+brew update
+brew install python3
+brew tap Homebrew/python
+brew install numpy --with-python3
+brew install matplotlib --with-python3
+pip3 install pandas jupyter scikit-learn
