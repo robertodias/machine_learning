@@ -11,7 +11,7 @@ brew update
 brew install python
 xcode-select —install
 pip install --upgrade pip setuptools
-pip install numpy pandas matplotlib jupyter scikit-learn
+pip install numpy pandas matplotlib jupyter scikit-learn scipy
 brew linkapps python
 
 Installing python 3
@@ -22,4 +22,4 @@ brew install python3
 brew tap Homebrew/python
 brew install numpy --with-python3
 brew install matplotlib --with-python3
-pip3 install pandas jupyter scikit-learn
+pip3 install pandas jupyter scikit-learn scipy
