@@ -11800,7 +11800,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Import libraries</span>
@@ -11852,14 +11852,14 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Calculate number of students</span>
 <span class="n">n_students</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">student_data</span><span class="p">)</span>
 
 <span class="c1"># TODO: Calculate number of features</span>
-<span class="n">n_features</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">student_data</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="n">n_features</span> <span class="o">=</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">student_data</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
 
 <span class="c1"># TODO: Calculate passing students</span>
 <span class="n">n_passed</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">student_data</span><span class="p">[</span><span class="s1">&#39;passed&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;yes&#39;</span><span class="p">)</span>
@@ -11868,7 +11868,7 @@ div#notebook {
 <span class="n">n_failed</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">student_data</span><span class="p">[</span><span class="s1">&#39;passed&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;no&#39;</span><span class="p">)</span>
 
 <span class="c1"># TODO: Calculate graduation rate</span>
-<span class="n">grad_rate</span> <span class="o">=</span> <span class="p">(</span><span class="n">n_passed</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_students</span>
+<span class="n">grad_rate</span> <span class="o">=</span> <span class="p">(</span><span class="n">n_passed</span> <span class="o">*</span> <span class="mf">100.0</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_students</span>
 
 <span class="c1"># Print the results</span>
 <span class="k">print</span> <span class="s2">&quot;Total number of students: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n_students</span><span class="p">)</span>
@@ -11889,10 +11889,10 @@ div#notebook {
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Total number of students: 395
-Number of features: 31
+Number of features: 30
 Number of students who passed: 265
 Number of students who failed: 130
-Graduation rate of the class: 67.00%
+Graduation rate of the class: 67.09%
 </pre>
 </div>
 </div>
@@ -11915,7 +11915,7 @@ Graduation rate of the class: 67.00%
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Extract feature columns</span>
@@ -11997,7 +11997,7 @@ Feature values:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">preprocess_features</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
@@ -12068,7 +12068,7 @@ Feature values:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Import any additional functionality you may need here</span>
@@ -12081,7 +12081,7 @@ Feature values:
 <span class="n">num_test</span> <span class="o">=</span> <span class="n">X_all</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">num_train</span>
 
 <span class="c1"># TODO: Shuffle and split the dataset into the number of training and testing points above</span>
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_all</span><span class="p">,</span><span class="n">y_all</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="n">num_test</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">33</span><span class="p">)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_all</span><span class="p">,</span> <span class="n">y_all</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="n">num_test</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">33</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y_all</span><span class="p">)</span>
 
 <span class="c1"># Show the results of the split</span>
 <span class="k">print</span> <span class="s2">&quot;Training set has {} samples.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -12190,6 +12190,10 @@ Logistic regression attempts to predict outcomes based on a set of independent v
 Considering our problem a Classification problem, Logistic regression is a pretty well-behaved classification algorithm that can be trained as long as you expect your features to be roughly linear and the problem to be linearly separable. It is also pretty robust to noise and you can avoid overfitting when applying L1 or L2 regularization (<a href="https://web.stanford.edu/~boyd/papers/admm/logreg-l1/logreg.html">https://web.stanford.edu/~boyd/papers/admm/logreg-l1/logreg.html</a>).</p>
 </li>
 </ul>
+<p><strong> P.S.: </strong>
+Following the Machine Learning Map (<a href="http://scikit-learn.org/stable/tutorial/machine_learning_map/">http://scikit-learn.org/stable/tutorial/machine_learning_map/</a>)
+It suggest us to use <strong>Linear Support Vector Machines</strong> or <strong>Naive Bayes to solve this problem</strong>.
+I will keep this map close to me on my next adventures :)</p>
 
 </div>
 </div>
@@ -12214,7 +12218,7 @@ Considering our problem a Classification problem, Logistic regression is a prett
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">train_classifier</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">):</span>
@@ -12287,7 +12291,7 @@ Considering our problem a Classification problem, Logistic regression is a prett
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[55]:</div>
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Import the three supervised learning models from sklearn</span>
@@ -12302,8 +12306,8 @@ Considering our problem a Classification problem, Logistic regression is a prett
 
 <span class="c1"># TODO: Initialize the three models</span>
 <span class="n">clf_A</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
-<span class="n">clf_B</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">DecisionTreeClassifier</span><span class="p">()</span>
-<span class="n">clf_C</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mf">1e5</span><span class="p">)</span>
+<span class="n">clf_B</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">33</span><span class="p">)</span>
+<span class="n">clf_C</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mf">1e5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">33</span><span class="p">)</span>
 
 <span class="c1"># TODO: Set up the training set sizes</span>
 <span class="n">X_train_100</span><span class="p">,</span> <span class="n">X_test_100</span><span class="p">,</span> <span class="n">y_train_100</span><span class="p">,</span> <span class="n">y_test_100</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_all</span><span class="p">,</span><span class="n">y_all</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">33</span><span class="p">)</span>
@@ -12311,17 +12315,9 @@ Considering our problem a Classification problem, Logistic regression is a prett
 <span class="n">X_train_300</span><span class="p">,</span> <span class="n">X_test_300</span><span class="p">,</span> <span class="n">y_train_300</span><span class="p">,</span> <span class="n">y_test_300</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_all</span><span class="p">,</span><span class="n">y_all</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">33</span><span class="p">)</span>
 
 <span class="c1"># TODO: Execute the &#39;train_predict&#39; function for each classifier and each training set size</span>
-<span class="c1">#train_predict(clf_A, X_train_100, y_train_100, X_test_100, y_test_100)</span>
-<span class="c1">#train_predict(clf_A, X_train_200, y_train_200, X_test_200, y_test_200)</span>
-<span class="c1">#train_predict(clf_A, X_train_300, y_train_300, X_test_300, y_test_300)</span>
-
-<span class="c1">#train_predict(clf_B, X_train_100, y_train_100, X_test_100, y_test_100)</span>
-<span class="c1">#train_predict(clf_B, X_train_200, y_train_200, X_test_200, y_test_200)</span>
-<span class="c1">#train_predict(clf_B, X_train_300, y_train_300, X_test_300, y_test_300)</span>
-
-<span class="n">train_predict</span><span class="p">(</span><span class="n">clf_C</span><span class="p">,</span> <span class="n">X_train_100</span><span class="p">,</span> <span class="n">y_train_100</span><span class="p">,</span> <span class="n">X_test_100</span><span class="p">,</span> <span class="n">y_test_100</span><span class="p">)</span>
-<span class="n">train_predict</span><span class="p">(</span><span class="n">clf_C</span><span class="p">,</span> <span class="n">X_train_200</span><span class="p">,</span> <span class="n">y_train_200</span><span class="p">,</span> <span class="n">X_test_200</span><span class="p">,</span> <span class="n">y_test_200</span><span class="p">)</span>
-<span class="n">train_predict</span><span class="p">(</span><span class="n">clf_C</span><span class="p">,</span> <span class="n">X_train_300</span><span class="p">,</span> <span class="n">y_train_300</span><span class="p">,</span> <span class="n">X_test_300</span><span class="p">,</span> <span class="n">y_test_300</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">clf</span> <span class="ow">in</span> <span class="p">[</span><span class="n">clf_A</span><span class="p">,</span> <span class="n">clf_B</span><span class="p">,</span> <span class="n">clf_C</span><span class="p">]:</span>
+    <span class="k">for</span> <span class="n">n_train</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">]:</span>
+        <span class="n">train_predict</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">[:</span><span class="n">n_train</span><span class="p">],</span> <span class="n">y_train</span><span class="p">[:</span><span class="n">n_train</span><span class="p">],</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12334,24 +12330,60 @@ Considering our problem a Classification problem, Logistic regression is a prett
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Training a LogisticRegression using a training set size of 295. . .
-Trained model in 0.0049 seconds
-Made predictions in 0.0003 seconds.
-F1 score for training set: 0.8475.
-Made predictions in 0.0002 seconds.
-F1 score for test set: 0.7111.
-Training a LogisticRegression using a training set size of 195. . .
-Trained model in 0.0057 seconds
-Made predictions in 0.0002 seconds.
-F1 score for training set: 0.8399.
-Made predictions in 0.0003 seconds.
-F1 score for test set: 0.7509.
-Training a LogisticRegression using a training set size of 95. . .
-Trained model in 0.0050 seconds
+<pre>Training a GaussianNB using a training set size of 100. . .
+Trained model in 0.0032 seconds
+Made predictions in 0.0008 seconds.
+F1 score for training set: 0.3333.
 Made predictions in 0.0013 seconds.
+F1 score for test set: 0.4235.
+Training a GaussianNB using a training set size of 200. . .
+Trained model in 0.0021 seconds
+Made predictions in 0.0014 seconds.
+F1 score for training set: 0.7865.
+Made predictions in 0.0005 seconds.
+F1 score for test set: 0.7857.
+Training a GaussianNB using a training set size of 300. . .
+Trained model in 0.0021 seconds
+Made predictions in 0.0014 seconds.
+F1 score for training set: 0.7855.
+Made predictions in 0.0006 seconds.
+F1 score for test set: 0.7737.
+Training a DecisionTreeClassifier using a training set size of 100. . .
+Trained model in 0.0013 seconds
+Made predictions in 0.0002 seconds.
 F1 score for training set: 1.0000.
-Made predictions in 0.0013 seconds.
-F1 score for test set: 0.7111.
+Made predictions in 0.0003 seconds.
+F1 score for test set: 0.7132.
+Training a DecisionTreeClassifier using a training set size of 200. . .
+Trained model in 0.0014 seconds
+Made predictions in 0.0002 seconds.
+F1 score for training set: 1.0000.
+Made predictions in 0.0002 seconds.
+F1 score for test set: 0.7206.
+Training a DecisionTreeClassifier using a training set size of 300. . .
+Trained model in 0.0019 seconds
+Made predictions in 0.0002 seconds.
+F1 score for training set: 1.0000.
+Made predictions in 0.0001 seconds.
+F1 score for test set: 0.7424.
+Training a LogisticRegression using a training set size of 100. . .
+Trained model in 0.0026 seconds
+Made predictions in 0.0001 seconds.
+F1 score for training set: 0.8936.
+Made predictions in 0.0001 seconds.
+F1 score for test set: 0.6718.
+Training a LogisticRegression using a training set size of 200. . .
+Trained model in 0.0020 seconds
+Made predictions in 0.0002 seconds.
+F1 score for training set: 0.8483.
+Made predictions in 0.0001 seconds.
+F1 score for test set: 0.8163.
+Training a LogisticRegression using a training set size of 300. . .
+Trained model in 0.0031 seconds
+Made predictions in 0.0002 seconds.
+F1 score for training set: 0.8322.
+Made predictions in 0.0002 seconds.
+F1 score for test set: 0.7971.
 </pre>
 </div>
 </div>
@@ -12388,24 +12420,24 @@ F1 score for test set: 0.7111.
 <tbody>
 <tr>
 <td style="text-align:center">100</td>
-<td style="text-align:center">0.0006</td>
-<td style="text-align:center">0.0003</td>
-<td style="text-align:center">0.8734</td>
-<td style="text-align:center">0.7940</td>
+<td style="text-align:center">0.0036</td>
+<td style="text-align:center">0.0009</td>
+<td style="text-align:center">0.3333</td>
+<td style="text-align:center">0.4235</td>
 </tr>
 <tr>
 <td style="text-align:center">200</td>
-<td style="text-align:center">0.0009</td>
-<td style="text-align:center">0.0004</td>
-<td style="text-align:center">0.8286</td>
-<td style="text-align:center">0.7399</td>
+<td style="text-align:center">0.0034</td>
+<td style="text-align:center">0.0014</td>
+<td style="text-align:center">0.7865</td>
+<td style="text-align:center">0.7857</td>
 </tr>
 <tr>
 <td style="text-align:center">300</td>
-<td style="text-align:center">0.0020</td>
-<td style="text-align:center">0.0005</td>
-<td style="text-align:center">0.8384</td>
-<td style="text-align:center">0.6923</td>
+<td style="text-align:center">0.0018</td>
+<td style="text-align:center">0.0010</td>
+<td style="text-align:center">0.7855</td>
+<td style="text-align:center">0.7737</td>
 </tr>
 </tbody>
 </table>
@@ -12422,24 +12454,24 @@ F1 score for test set: 0.7111.
 <tbody>
 <tr>
 <td style="text-align:center">100</td>
-<td style="text-align:center">0.0007</td>
-<td style="text-align:center">0.0002</td>
+<td style="text-align:center">0.0010</td>
+<td style="text-align:center">0.0003</td>
 <td style="text-align:center">1.0000</td>
-<td style="text-align:center">0.6723</td>
+<td style="text-align:center">0.7132</td>
 </tr>
 <tr>
 <td style="text-align:center">200</td>
-<td style="text-align:center">0.0012</td>
+<td style="text-align:center">0.0019</td>
 <td style="text-align:center">0.0002</td>
 <td style="text-align:center">1.0000</td>
-<td style="text-align:center">0.6480</td>
+<td style="text-align:center">0.7206</td>
 </tr>
 <tr>
 <td style="text-align:center">300</td>
-<td style="text-align:center">0.0244</td>
-<td style="text-align:center">0.0008</td>
+<td style="text-align:center">0.0020</td>
+<td style="text-align:center">0.0002</td>
 <td style="text-align:center">1.0000</td>
-<td style="text-align:center">0.6650</td>
+<td style="text-align:center">0.7424</td>
 </tr>
 </tbody>
 </table>
@@ -12456,24 +12488,24 @@ F1 score for test set: 0.7111.
 <tbody>
 <tr>
 <td style="text-align:center">100</td>
-<td style="text-align:center">0.0017</td>
-<td style="text-align:center">0.0008</td>
-<td style="text-align:center">1.0000</td>
-<td style="text-align:center">0.7111</td>
+<td style="text-align:center">0.0030</td>
+<td style="text-align:center">0.0001</td>
+<td style="text-align:center">0.8936</td>
+<td style="text-align:center">0.6718</td>
 </tr>
 <tr>
 <td style="text-align:center">200</td>
-<td style="text-align:center">0.0036</td>
-<td style="text-align:center">0.0003</td>
-<td style="text-align:center">0.8369</td>
-<td style="text-align:center">0.7509</td>
+<td style="text-align:center">0.0028</td>
+<td style="text-align:center">0.0002</td>
+<td style="text-align:center">0.8483</td>
+<td style="text-align:center">0.8163</td>
 </tr>
 <tr>
 <td style="text-align:center">300</td>
-<td style="text-align:center">0.0031</td>
-<td style="text-align:center">0.0014</td>
-<td style="text-align:center">0.8508</td>
-<td style="text-align:center">0.7111</td>
+<td style="text-align:center">0.0033</td>
+<td style="text-align:center">0.0002</td>
+<td style="text-align:center">0.8322</td>
+<td style="text-align:center">0.7971</td>
 </tr>
 </tbody>
 </table>
@@ -12532,6 +12564,8 @@ F1 score for test set: 0.7111.
 <p><strong>Answer: </strong>
 Logistic Regression is a regression model that makes predictions based on probabilities. It's focused in the conditional probability distribution of Y given X.</p>
 <p>The whole idea is to, based on the data you have, find a generic function that could be applied to any new data entry to produce a predictions. Logistic Regression works as a binary (0 and 1's) logistic model, which means it is used to estimate the probability of binary responses considering multiple entry data features.</p>
+<p>Logistic Regression is a method applied to find a binary output of Y, considering a linearly combined input of X's.
+Binomial or binary logistic regression deals with situations in which the observed outcome for a dependent variable can have only two possible types, "0" and "1" and the logistic function (sigmoid) is used at the core of this model to guarantee the binary behavior the results/predictions.</p>
 <p>So, in our scenario, the traning data help us to create a equation that when applied to those features will produce a binary result that best matches with the training result we have. After the "fit" of our model we can then use it to generalize predictions using real data. In our case we are going to enter new students data and then our trained model will answers back if that student will pass or fail the graduation.</p>
 
 </div>
@@ -12563,7 +12597,7 @@ Logistic Regression is a regression model that makes predictions based on probab
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[88]:</div>
+<div class="prompt input_prompt">In&nbsp;[37]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Import &#39;GridSearchCV&#39; and &#39;make_scorer&#39;</span>
@@ -12572,12 +12606,13 @@ Logistic Regression is a regression model that makes predictions based on probab
 
 <span class="c1"># TODO: Create the parameters list you wish to tune</span>
 <span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">{</span><span class="s1">&#39;class_weight&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;balanced&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">]}</span>
+    <span class="p">{</span><span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">],</span>
+    <span class="s1">&#39;class_weight&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;balanced&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">]}</span>
 <span class="p">]</span>
 
 <span class="c1"># TODO: Initialize the classifier</span>
 <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
-<span class="n">clf</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mf">1e5</span><span class="p">)</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mf">1e5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">33</span><span class="p">)</span>
 
 <span class="c1"># TODO: Make an f1 scoring function using &#39;make_scorer&#39; </span>
 <span class="n">f1_scorer</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="n">f1_score</span><span class="p">,</span> <span class="n">pos_label</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span><span class="p">)</span>
@@ -12607,9 +12642,9 @@ Logistic Regression is a regression model that makes predictions based on probab
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Made predictions in 0.0002 seconds.
-Tuned model has a training F1 score of 0.8540.
-Made predictions in 0.0003 seconds.
-Tuned model has a testing F1 score of 0.7244.
+Tuned model has a training F1 score of 0.8349.
+Made predictions in 0.0001 seconds.
+Tuned model has a testing F1 score of 0.8085.
 </pre>
 </div>
 </div>
@@ -12634,8 +12669,8 @@ Tuned model has a testing F1 score of 0.7244.
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong>
-The final model's F1 results were 0.8540 for training and 0.7244 for testing.
-Both traning and testing were slightly better than the untuned model, untuned Training was 0.8508 and untuned testing was 0.7111.</p>
+The final model's F1 results were 0.8349 for training and 0.8085 for testing.
+Both traning and testing were slightly better than the untuned model, untuned Training was 0.8322 and untuned testing was 0.7971.</p>
 <p>Tunning here looks to be a good option, even if we are still not reaching high confidence predictions.</p>
 
 </div>
