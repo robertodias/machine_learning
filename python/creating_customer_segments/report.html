@@ -12064,11 +12064,11 @@ div#notebook {
 <p><strong>Answer:</strong></p>
 <ul>
 <li><strong>Customer 0</strong>:
-This customer have as the main product Fresh, Milk and Grocery, but we can't ignore it also uses Detergent a lot as Delicatessen. I this this establishment represents a Restaurant, probably an <strong>Italian Restaurant</strong> with lots of pasta, tomatoes, cheese and wine.</li>
+This customer spents with Fresh and Milk products exceeds the third quartile of all other customers. Grocery is also considerable, but we can't ignore it also uses Detergent a lot as Delicatessen. I this this establishment represents a Restaurant, probably an <strong>Italian Restaurant</strong> with lots of pasta, tomatoes, cheese and wine.</li>
 </ul>
 <ul>
 <li><strong>Customer 222</strong>: 
-This customer uses a lot of Frozen products, but a very small amount of Detergents. I think this customer is a very busy <strong>Family</strong>. That eats Frozen food most of the time.</li>
+This customer spents with Frozen products represents way more than the third quartile of all other customers, we can also identify a very small amount of Detergents. I think this customer is a very busy <strong>Family</strong>. That eats Frozen food most of the time.</li>
 </ul>
 <ul>
 <li><strong>Customer 342</strong>: 
@@ -12100,7 +12100,7 @@ This customer based on its cost of Delicatessen, I think it is a <strong>small c
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[106]:</div>
+<div class="prompt input_prompt">In&nbsp;[175]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Make a copy of the DataFrame, using the &#39;drop&#39; function to drop the given feature</span>
@@ -12110,15 +12110,15 @@ This customer based on its cost of Delicatessen, I think it is a <strong>small c
 <span class="n">y</span> <span class="o">=</span> <span class="n">new_data</span><span class="p">[</span><span class="s1">&#39;Fresh&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">new_data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Fresh&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">72</span><span class="p">)</span>
 
 <span class="c1"># TODO: Create a decision tree regressor and fit it to the training set</span>
 <span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeRegressor</span>
-<span class="n">regressor</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">regressor</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">regressor</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">72</span><span class="p">)</span>
+<span class="n">regressor</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
 <span class="c1"># TODO: Report the score of the prediction using the testing set</span>
-<span class="n">score</span> <span class="o">=</span> <span class="n">regressor</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">score</span> <span class="o">=</span> <span class="n">regressor</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 <span class="k">print</span> <span class="n">score</span>
 </pre></div>
 
@@ -12132,7 +12132,7 @@ This customer based on its cost of Delicatessen, I think it is a <strong>small c
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>1.0
+<pre>-1.21236771823
 </pre>
 </div>
 </div>
@@ -12158,7 +12158,8 @@ This customer based on its cost of Delicatessen, I think it is a <strong>small c
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong>
-The feature I was attempting to predict was the <strong>Fresh</strong>. The prediction score I've found, using the Decision Tree Regressor was the best possible. It scored 1.0 meaning that using the other features I was able to determine the values of the missing feature.</p>
+The feature I was attempting to predict was the <strong>Fresh</strong>. The prediction score I've found, using the Decision Tree Regressor -1.21236771823l. As my R^2 was negative I am assuming that the model failed to fit the data, that way, this feature looked to not have a strong relation with any of the other features.
+The final conclusion, about the role of the feature <strong>Fresh</strong> in model, is that it have a high Relevance to model as it was not possible to predict its value only by using the information shared with the other features from the model.</p>
 
 </div>
 </div>
@@ -17741,12 +17742,15 @@ Once you have performed this implementation, the dataset will be stored in the v
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[115]:</div>
+<div class="prompt input_prompt">In&nbsp;[221]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># For each feature find the data points with extreme high or low values</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1">#Inicialize uma lista vazia de indices_outliers</span>
+<span class="n">outliers_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+
+<span class="c1"># For each feature find the data points with extreme high or low values</span>
 <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">log_data</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-    
+     
     <span class="c1"># TODO: Calculate Q1 (25th percentile of the data) for the given feature</span>
     <span class="n">Q1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">log_data</span><span class="p">[</span><span class="n">feature</span><span class="p">],</span> <span class="mi">25</span><span class="p">)</span>
     
@@ -17758,10 +17762,21 @@ Once you have performed this implementation, the dataset will be stored in the v
     
     <span class="c1"># Display the outliers</span>
     <span class="k">print</span> <span class="s2">&quot;Data points considered outliers for the feature &#39;{}&#39;:&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span>
-    <span class="n">display</span><span class="p">(</span><span class="n">log_data</span><span class="p">[</span><span class="o">~</span><span class="p">((</span><span class="n">log_data</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">Q1</span> <span class="o">-</span> <span class="n">step</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">log_data</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">Q3</span> <span class="o">+</span> <span class="n">step</span><span class="p">))])</span>
+    <span class="n">outlier</span> <span class="o">=</span> <span class="n">log_data</span><span class="p">[</span><span class="o">~</span><span class="p">((</span><span class="n">log_data</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">Q1</span> <span class="o">-</span> <span class="n">step</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">log_data</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">Q3</span> <span class="o">+</span> <span class="n">step</span><span class="p">))]</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">outlier</span><span class="p">)</span>
+    
+    <span class="c1">#Iterate over outliers from the current feature and add them to the outliers_dict</span>
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">outlier</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">outliers_dict</span><span class="p">:</span>
+            <span class="n">outliers_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">outliers_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
     
 <span class="c1"># OPTIONAL: Select the indices for data points you wish to remove</span>
-<span class="n">outliers</span>  <span class="o">=</span> <span class="p">[</span><span class="mi">65</span><span class="p">,</span> <span class="mi">66</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">154</span><span class="p">]</span>
+<span class="n">outliers</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">outliers_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">outliers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
 
 <span class="c1"># Remove the outliers, if any were specified</span>
 <span class="n">good_data</span> <span class="o">=</span> <span class="n">log_data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">log_data</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">outliers</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
@@ -18445,7 +18460,7 @@ Once you have performed this implementation, the dataset will be stored in the v
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[118]:</div>
+<div class="prompt input_prompt">In&nbsp;[223]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
@@ -18459,6 +18474,8 @@ Once you have performed this implementation, the dataset will be stored in the v
 
 <span class="c1"># Generate PCA results plot</span>
 <span class="n">pca_results</span> <span class="o">=</span> <span class="n">rs</span><span class="o">.</span><span class="n">pca_results</span><span class="p">(</span><span class="n">good_data</span><span class="p">,</span> <span class="n">pca</span><span class="p">)</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -18468,6 +18485,15 @@ Once you have performed this implementation, the dataset will be stored in the v
 <div class="output_wrapper">
 <div class="output">
 
+
+<div class="output_area"><div class="prompt output_prompt">Out[223]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([ 0.44302505,  0.70681723,  0.82988103,  0.93109011,  0.97959207,  1.        ])</pre>
+</div>
+
+</div>
 
 <div class="output_area"><div class="prompt"></div>
 
@@ -18879,7 +18905,7 @@ Seems to be an area where Frozen goods is very important (around 0.8) the other 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[119]:</div>
+<div class="prompt input_prompt">In&nbsp;[222]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Display sample log-data after having a PCA transformation applied</span>
@@ -18913,34 +18939,43 @@ Seems to be an area where Frozen goods is very important (around 0.8) the other 
   <tbody>
     <tr>
       <th>0</th>
-      <td>1.7580</td>
-      <td>-0.0097</td>
-      <td>-0.9590</td>
-      <td>-1.6824</td>
-      <td>-0.2680</td>
-      <td>0.3891</td>
+      <td>1.7557</td>
+      <td>0.0102</td>
+      <td>-1.5998</td>
+      <td>-1.0694</td>
+      <td>-0.1526</td>
+      <td>0.3871</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>-1.9682</td>
-      <td>-0.0198</td>
-      <td>0.4150</td>
-      <td>1.4152</td>
-      <td>0.1703</td>
-      <td>-0.4271</td>
+      <td>-1.9731</td>
+      <td>-0.0694</td>
+      <td>0.9407</td>
+      <td>1.1893</td>
+      <td>-0.0614</td>
+      <td>-0.4796</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>2.4161</td>
-      <td>-2.5284</td>
-      <td>1.7054</td>
-      <td>-0.4031</td>
-      <td>0.4972</td>
-      <td>0.5129</td>
+      <td>2.4647</td>
+      <td>-2.6924</td>
+      <td>1.1413</td>
+      <td>-0.6281</td>
+      <td>0.5964</td>
+      <td>0.5811</td>
     </tr>
   </tbody>
 </table>
 </div>
+</div>
+
+</div>
+
+<div class="output_area"><div class="prompt output_prompt">Out[222]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([ 0.47635078,  0.72903135,  0.84662795,  0.93495637,  0.97489841,  1.        ])</pre>
 </div>
 
 </div>
@@ -18967,7 +19002,7 @@ Seems to be an area where Frozen goods is very important (around 0.8) the other 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[121]:</div>
+<div class="prompt input_prompt">In&nbsp;[234]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
@@ -19083,8 +19118,8 @@ Seems to be an area where Frozen goods is very important (around 0.8) the other 
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
-<p><strong>K-Means Clustering Algorithm</strong> Simpliest, easy to implement and most of time it's fast and efficient than the other clustering algorithms (considering you have a reduced number of Ks).</p>
-<p><strong>Gaussian Mixture Model Clustering Algorithm</strong> better to find hidden parameters in data, more flexible to identify clusters by allowing a point to be classified by more than one cluster (mixture).</p>
+<p><strong>K-Means Clustering Algorithm</strong> Simpliest, easy to implement, the number of clusters is defined by the user and most of time it's fast and efficient than the other clustering algorithms (considering you have a reduced number of Ks).</p>
+<p><strong>Gaussian Mixture Model Clustering Algorithm</strong> better to find hidden parameters in data, more flexible to identify clusters by allowing a point to be classified by more than one cluster (mixture). As the K-means, this alorigthm have the number of clusters defined by the user, what do not happen in other algorithms like the hierachical clustering.</p>
 <p>I am still not confortable with the classification of the customers, so I think Gaussian Mixture Model will help me to see if I have any hidden cluster or, at least, confirm how the data its being classified.</p>
 
 </div>
@@ -19113,26 +19148,31 @@ Seems to be an area where Frozen goods is very important (around 0.8) the other 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[161]:</div>
+<div class="prompt input_prompt">In&nbsp;[243]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Apply your clustering algorithm of choice to the reduced data </span>
 <span class="kn">from</span> <span class="nn">sklearn.mixture</span> <span class="kn">import</span> <span class="n">GMM</span>
-<span class="n">clusterer</span> <span class="o">=</span> <span class="n">GMM</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">reduced_data</span><span class="p">)</span>
-
-<span class="c1"># TODO: Predict the cluster for each data point</span>
-<span class="n">preds</span> <span class="o">=</span> <span class="n">clusterer</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">reduced_data</span><span class="p">)</span>
-
-<span class="c1"># TODO: Find the cluster centers</span>
-<span class="n">centers</span> <span class="o">=</span> <span class="n">clusterer</span><span class="o">.</span><span class="n">means_</span>
-
-<span class="c1"># TODO: Predict the cluster for each transformed sample data point</span>
-<span class="n">sample_preds</span> <span class="o">=</span> <span class="n">clusterer</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">pca_samples</span><span class="p">)</span>
-
-<span class="c1"># TODO: Calculate the mean silhouette coefficient for the number of clusters chosen</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
-<span class="n">score</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">silhouette_score</span><span class="p">(</span><span class="n">reduced_data</span><span class="p">,</span> <span class="n">preds</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">score</span>
+
+<span class="k">def</span> <span class="nf">silhouette_by_cluster</span><span class="p">(</span><span class="n">cluster</span><span class="p">):</span>
+    <span class="n">clusterer</span> <span class="o">=</span> <span class="n">GMM</span><span class="p">(</span><span class="n">cluster</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">reduced_data</span><span class="p">)</span>
+
+    <span class="c1"># TODO: Predict the cluster for each data point</span>
+    <span class="n">preds</span> <span class="o">=</span> <span class="n">clusterer</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">reduced_data</span><span class="p">)</span>
+
+    <span class="c1"># TODO: Find the cluster centers</span>
+    <span class="n">centers</span> <span class="o">=</span> <span class="n">clusterer</span><span class="o">.</span><span class="n">means_</span>
+
+    <span class="c1"># TODO: Predict the cluster for each transformed sample data point</span>
+    <span class="n">sample_preds</span> <span class="o">=</span> <span class="n">clusterer</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">pca_samples</span><span class="p">)</span>
+
+    <span class="c1"># TODO: Calculate the mean silhouette coefficient for the number of clusters chosen</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">silhouette_score</span><span class="p">(</span><span class="n">reduced_data</span><span class="p">,</span> <span class="n">preds</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">score</span>
+
+<span class="k">for</span> <span class="n">cluster</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;{} Clusters: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cluster</span><span class="p">,</span> <span class="n">silhouette_by_cluster</span><span class="p">(</span><span class="n">cluster</span><span class="p">)))</span>
 </pre></div>
 
 </div>
@@ -19145,7 +19185,13 @@ Seems to be an area where Frozen goods is very important (around 0.8) the other 
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>0.411818864386
+<pre>2 Clusters: 0.411818864386
+3 Clusters: 0.372313708076
+4 Clusters: 0.337969395886
+5 Clusters: 0.280672691612
+6 Clusters: 0.278739044291
+7 Clusters: 0.321289330242
+8 Clusters: 0.304106857662
 </pre>
 </div>
 </div>
@@ -19170,13 +19216,13 @@ Seems to be an area where Frozen goods is very important (around 0.8) the other 
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
-<p><strong> 2 Clusters: </strong> 0.411818864386</p>
-<p><strong> 3 Clusters: </strong> 0.373560747175</p>
-<p><strong> 4 Clusters: </strong> 0.304013033756</p>
-<p><strong> 5 Clusters: </strong> 0.294578255500</p>
-<p><strong> 6 Clusters: </strong> 0.269001207121</p>
-<p><strong> 7 Clusters: </strong> 0.323986015565</p>
-<p><strong> 8 Clusters: </strong> 0.297016945923</p>
+<p><strong>2 Clusters:</strong> 0.411818864386</p>
+<p><strong>3 Clusters:</strong> 0.372313708076</p>
+<p><strong>4 Clusters:</strong> 0.337969395886</p>
+<p><strong>5 Clusters:</strong> 0.280672691612</p>
+<p><strong>6 Clusters:</strong> 0.278739044291</p>
+<p><strong>7 Clusters:</strong> 0.321289330242</p>
+<p><strong>8 Clusters:</strong> 0.304106857662</p>
 <p>The best silhouette Score was found using <strong>2 Clusters</strong>.</p>
 
 </div>
@@ -20149,7 +20195,8 @@ Sample point 2 predicted to be in Cluster 1
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
-<p>The distributor can select a few customers from each segment and create a "Pilot", only customers from the Pilot will have their delivery service changed. The distributor needs to be aware of the average amount spent by those customers, and also consider the values from same period of the year (in the past).</p>
+<p>The wholesale distributor should use the segments produced by our PCA, dividing its customers in 2 segments. As they behave differently, they should not be considered as one.</p>
+<p>To better apply this test, the distributor should select a few customers from each segment and create a "Pilot", only customers from the Pilot will have their delivery service changed. The distributor needs to be aware of the average amount spent by those customers, and also consider the values from same period of the year (in the past).</p>
 <p>That way, after a pre-determined period of analysis and test of this new delivery model on its Pilot customers, the distributor can compare the amounts and values and check if they were lower (negative reaction) equal or greather (positive reaction).</p>
 
 </div>
@@ -20974,8 +21021,7 @@ I think it was very aligned with my classifcation, however it still looks to be 
 <p><strong>For my second Cluser (1)</strong>:
 I've considered this cluster a Market like, and in this example it was classified as Retailer.
 I think it was also aligned with my original classification, even not being directly set as retailer by me, I think a Market like classification means pretty much the same.</p>
-<p>After all those analysis, I am still not confident that those 2 clusters are definitive as we saw a lot of overlapping of data points when displaying the data distribution.
-But, for the purpose of this project, I consider those classifications significantly consistent with my previous defintions of the customer segments.</p>
+<p>After this project I saw that it is better to use the segments identified by Clustering Algorithms instead of labels we used assign based on superficial analysis. The use of Clustering helped us to identify segments that are really similar like Hotels/Restaurants/Cafes and that would probably being considerated differents by the common Labeling approach. Lessons Learnt: always classify based on Data analysis than simply trust in pre-defined labels.</p>
 
 </div>
 </div>
