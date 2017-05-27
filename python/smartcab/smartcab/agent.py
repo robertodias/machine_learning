@@ -23,7 +23,8 @@ class LearningAgent(Agent):
         ## TO DO ##
         ###########
         # Set any additional class parameters as needed
-        self.decay = 0.05
+        #self.decay = 0.05
+        self.decay = 0.1
 
 
     def reset(self, destination=None, testing=False):
@@ -38,7 +39,7 @@ class LearningAgent(Agent):
         ## TO DO ##
         ###########
         # Update epsilon using a decay function of your choice
-        self.epsilon -= ((self.epsilon * self.decay)/5)
+        self.epsilon -= ((self.epsilon * self.decay)/10)
         
         # Update additional class parameters as needed
         # If 'testing' is True, set epsilon and alpha to 0
@@ -67,7 +68,7 @@ class LearningAgent(Agent):
         #   If it is not, create a dictionary in the Q-table for the current 'state'
         #   For each action, set the Q-value for the state-action pair to 0
         
-        state = (waypoint, inputs['light'], inputs['right'], inputs['oncoming'])
+        state = (waypoint, inputs['light'], inputs['left'], inputs['oncoming'])
 
         return state
 
@@ -126,7 +127,8 @@ class LearningAgent(Agent):
             if self.epsilon > random.random():
                 action = random.choice(self.valid_actions)
             else:                
-                action = [k for k, v  in self.Q[state].items() if v == self.get_maxQ(state)][0]
+                #action = [k for k, v  in self.Q[state].items() if v == self.get_maxQ(state)][0]
+                action = random.choice([k for k, v  in self.Q[state].items() if v == self.get_maxQ(state)])
         else:
             actions = [None, 'left', 'right', 'forward']
             action = random.choice(actions)

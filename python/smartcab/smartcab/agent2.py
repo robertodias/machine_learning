@@ -47,7 +47,7 @@ class LearningAgent(Agent):
             self.epsilon = 0
 
         return None
-a
+
     def build_state(self):
         """ The build_state function is called when the agent requests data from the 
             environment. The next waypoint, the intersection inputs, and the deadline 
@@ -66,7 +66,7 @@ a
         #   If it is not, create a dictionary in the Q-table for the current 'state'
         #   For each action, set the Q-value for the state-action pair to 0
         
-        state = (waypoint, inputs['light'], inputs['right'], inputs['oncoming'], inputs['left'])
+        state = (waypoint, inputs['light'], inputs['left'], inputs['oncoming'])
 
         return state
 
@@ -126,6 +126,7 @@ a
                 action = random.choice(self.valid_actions)
             else:                
                 action = [k for k, v  in self.Q[state].items() if v == self.get_maxQ(state)][0]
+                #action = random.choice([k for k, v  in self.Q[state].items() if v == self.get_maxQ(state)])
         else:
             actions = [None, 'left', 'right', 'forward']
             action = random.choice(actions)
